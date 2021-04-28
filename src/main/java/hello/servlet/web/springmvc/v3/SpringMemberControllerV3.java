@@ -4,10 +4,7 @@ import hello.servlet.domain.member.Member;
 import hello.servlet.domain.member.MemberRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,12 +21,12 @@ public class SpringMemberControllerV3 {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
-    @GetMapping("/new-form")
+    @GetMapping("/new-form") // @RequestMapping(value = "/new-form", method = RequestMethod.GET)와 동일
     public String newForm() {
         return "new-form";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/save") // @RequestMapping(value = "/save", method = RequestMethod.POST)와 동일
     public String save(
             @RequestParam("username") String username,
             @RequestParam("age") int age,
@@ -42,7 +39,7 @@ public class SpringMemberControllerV3 {
         return "save-result";
     }
 
-    @GetMapping
+    @GetMapping // @RequestMapping(method = RequestMethod.GET)와 동일
     public String members(Model model) {
         List<Member> members = memberRepository.findAll();
         model.addAttribute("members", members);
