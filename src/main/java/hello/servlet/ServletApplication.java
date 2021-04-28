@@ -12,4 +12,9 @@ public class ServletApplication {
 		SpringApplication.run(ServletApplication.class, args);
 	}
 
+//	@Bean // 스프링 빈으로 직접 등록한다.
+//	SpringMemberFormControllerV1 springMemberFormControllerV1() {
+//		return new SpringMemberFormControllerV1();
+//	}
+
 }
